@@ -1,3 +1,6 @@
+https://philippgadow.github.io/2019-09-17-atlasdsoftwaretutorial/
+
+
 # workshop-template
 
 This repository is The Carpentries' ([Software Carpentry][swc-site], [Data Carpentry][dc-site], and [Library Carpentry][lc-site]'s)
