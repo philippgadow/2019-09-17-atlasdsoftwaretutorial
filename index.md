@@ -12,22 +12,12 @@ humantime: "09 am - 07 pm"    # human-readable times for the workshop (e.g., "9:
 startdate: 2019-09-17      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
 enddate: 2019-09-17        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
 instructor: ["Junggeburth, Johannes", "Gadow, Philipp", "Lory, Alexander", "Schanet, Eric", "Hartmann, Nikolai", "Brendlinger, Kurt", "Kawamura, Gen"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
-helper: [""]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+# helper: [""]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
 email: ["paul.philipp.gadow@cern.ch"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
 collaborative_notes:             # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document
 eventbrite:           # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
 ---
 
-{% comment %} See instructions in the comments below for how to edit specific sections of this workshop template. {% endcomment %}
-
-{% comment %}
-HEADER
-
-Edit the values in the block above to be appropriate for your workshop.
-If the value is not 'true', 'false', 'null', or a number, please use
-double quotation marks around the value, unless specified otherwise.
-And run 'make workshop-check' *before* committing to make sure that changes are good.
-{% endcomment %}
 
 
 {% if page.carpentry != site.carpentry %}
@@ -41,12 +31,6 @@ see the changes take effect locally.
 
 <h2 id="general">General Information</h2>
 
-{% comment %}
-INTRODUCTION
-
-Edit the general explanatory paragraph below if you want to change
-the pitch.
-{% endcomment %}
 {% if page.carpentry == "swc" %}
 {% include sc/intro.html %}
 {% elsif page.carpentry == "dc" %}
@@ -55,28 +39,9 @@ the pitch.
 {% include lc/intro.html %}
 {% endif %}
 
-{% comment %}
-AUDIENCE
+This tutorial is targeting graduate students and researches working with ATLAS software in a German reseach institute.
+Some basic knowledge on computing is assumed, such as working with the command line, version control using git, basic knowledge of python and C++.
 
-Explain who your audience is.  (In particular, tell readers if the
-workshop is only open to people from a particular institution.
-{% endcomment %}
-{% if page.carpentry == "swc" %}
-{% include sc/who.html %}
-{% elsif page.carpentry == "dc" %}
-{% include dc/who.html %}
-{% elsif page.carpentry == "lc" %}
-{% include lc/who.html %}
-{% endif %}
-
-{% comment %}
-LOCATION
-
-This block displays the address and links to maps showing directions
-if the latitude and longitude of the workshop have been set.  You
-can use https://itouchmap.com/latlong.html to find the lat/long of an
-address.
-{% endcomment %}
 {% if page.latlng %}
 <p id="where">
   <strong>Where:</strong>
@@ -88,11 +53,6 @@ address.
 </p>
 {% endif %}
 
-{% comment %}
-DATE
-
-This block displays the date and links to Google Calendar.
-{% endcomment %}
 {% if page.humandate %}
 <p id="when">
   <strong>When:</strong>
@@ -101,53 +61,13 @@ This block displays the date and links to Google Calendar.
 </p>
 {% endif %}
 
-{% comment %}
-SPECIAL REQUIREMENTS
-
-Modify the block below if there are any special requirements.
-{% endcomment %}
 <p id="requirements">
   <strong>Requirements:</strong> Participants must bring a laptop with a
   Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on. They should have a few specific software packages installed (listed <a href="#setup">below</a>).
 </p>
 
-{% comment%}
-CODE OF CONDUCT
-{% endcomment %}
-<p id="code-of-conduct">
-<strong>Code of Conduct:</strong>  Everyone who participates in Carpentries activities is required to conform to the <a href="https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html">Code of Conduct</a>. This document also outlines how to report an incident if needed.
-</p>
 
 
-{% comment %}
-ACCESSIBILITY
-
-Modify the block below if there are any barriers to accessibility or
-special instructions.
-{% endcomment %}
-<p id="accessibility">
-  <strong>Accessibility:</strong> We are committed to making this workshop
-  accessible to everybody.
-  The workshop organizers have checked that:
-</p>
-<ul>
-  <li>The room is wheelchair / scooter accessible.</li>
-  <li>Accessible restrooms are available.</li>
-</ul>
-<p>
-  Materials will be provided in advance of the workshop and
-  large-print handouts are available if needed by notifying the
-  organizers in advance.  If we can help making learning easier for
-  you (e.g. sign-language interpreters, lactation facilities) please
-  get in touch (using contact details below) and we will
-  attempt to provide them.
-</p>
-
-{% comment %}
-CONTACT EMAIL ADDRESS
-
-Display the contact email address set in the configuration file.
-{% endcomment %}
 <p id="contact">
   <strong>Contact</strong>:
   Please email
@@ -169,25 +89,6 @@ Display the contact email address set in the configuration file.
 </p>
 
 <hr/>
-
-{% comment %} 
-SURVEYS - DO NOT EDIT SURVEY LINKS 
-{% endcomment %}
-<h2 id="surveys">Surveys</h2>
-<p>Please be sure to complete these surveys before and after the workshop.</p>
-{% if site.carpentry == "swc" %} 
-<p><a href="{{ site.swc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
-<p><a href="{{ site.swc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
-{% elsif site.carpentry == "dc" %}
-<p><a href="{{ site.dc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
-<p><a href="{{ site.dc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
-{% elsif site.carpentry == "lc" %}
-<p><a href="{{ site.lc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
-<p><a href="{{ site.lc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
-{% endif %}
-
-<hr/>
-
 
 {% comment %}
 SCHEDULE
